@@ -33,9 +33,12 @@ public class ObstacleSpawner : MonoBehaviour
     private void SpawnObstacle()
     {
         int obstacleType = ((int)Random.Range(0, obstaclePrefabs.Count));
-        GameObject obstacle = Instantiate(obstaclePrefabs[obstacleType], transform);
+        GameObject obstacle = Instantiate(obstaclePrefabs[obstacleType]);//, transform);
         float angle = ((int)Random.Range(0, 4)) * 90;
-        obstacle.transform.localRotation = Quaternion.AngleAxis(angle, transform.forward);
+        obstacle.transform.position = transform.position;
+        obstacle.transform.rotation= Quaternion.Euler(transform.rotation.eulerAngles);
+        //todo
+        //obstacle.transform.localRotation = Quaternion.AngleAxis(angle, transform.forward);
     }
 
     private void GenerateDelay()
